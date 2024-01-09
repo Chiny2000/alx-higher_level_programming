@@ -1,15 +1,13 @@
 #!/usr/bin/python3
 import sys
-import json
-from os.path import exists
 from save_to_json_file import save_to_json_file
 from load_from_json_file import load_from_json_file
 
 def add_item():
     # Check if the file exists, if not, create an empty list
-    if exists("add_item.json"):
+    try:
         my_list = load_from_json_file("add_item.json")
-    else:
+    except FileNotFoundError:
         my_list = []
 
     # Add command line arguments to the list
